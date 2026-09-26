@@ -1,0 +1,623 @@
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: var(--black);
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at 65% 50%,
+      black 0%,
+      transparent 72%
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at 65% 50%,
+      black 0%,
+      transparent 72%
+    );
+}
+
+
+/* =========================================================
+   PRIMARY BLUE LIGHT
+========================================================= */
+
+.hero-light {
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  left: 50%;
+  top: 50%;
+
+  z-index: 1;
+
+  transform: translate3d(-50%, -50%, 0);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(18, 78, 115, 0.75) 0%,
+      rgba(18, 78, 115, 0.45) 18%,
+      rgba(18, 78, 115, 0.22) 38%,
+      rgba(18, 78, 115, 0.08) 58%,
+      transparent 75%
+    );
+
+  filter: blur(12px);
+
+  pointer-events: none;
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   SECONDARY YELLOW LIGHT
+========================================================= */
+
+.hero-light--secondary {
+  width: 420px;
+  height: 420px;
+
+  left: 70%;
+  top: 40%;
+
+  opacity: 0.9;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(242, 221, 114, 0.40) 0%,
+      rgba(242, 221, 114, 0.20) 25%,
+      rgba(242, 221, 114, 0.08) 50%,
+      transparent 72%
+    );
+
+  filter: blur(18px);
+}
+
+
+/* =========================================================
+   NOISE
+========================================================= */
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  opacity: 0.025;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+  mix-blend-mode: soft-light;
+}
+
+
+/* =========================================================
+   HERO CONTAINER
+========================================================= */
+
+.hero .container {
+  position: relative;
+
+  z-index: 5;
+
+  padding-top: 70px;
+}
+
+
+.hero-content {
+  max-width: 820px;
+}
+
+/* =========================================================
+   HERO CONTAINER — restore stacking above decorative layers
+========================================================= */
+
+.hero .container {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0 0 24px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+
+.hero-eyebrow span {
+  display: block;
+
+  width: 28px;
+  height: 1px;
+
+  flex: 0 0 auto;
+
+  background: var(--yellow);
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title {
+  max-width: 850px;
+
+  margin: 0;
+
+  color: var(--white);
+
+  font-size: clamp(
+    3.4rem,
+    7vw,
+    6rem
+  );
+
+  font-weight: 500;
+
+  line-height: 0.96;
+
+  letter-spacing: -0.055em;
+}
+
+
+.hero-line {
+  display: block;
+}
+
+
+.hero-line--accent {
+  position: relative;
+
+  width: fit-content;
+
+  color: var(--yellow);
+}
+
+
+/* Glow underneath accent text */
+
+.hero-line--accent::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5%;
+  right: -8%;
+
+  bottom: 4%;
+
+  z-index: -1;
+
+  height: 45%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 78, 115, 0.22),
+      rgba(242, 221, 114, 0.10),
+      transparent
+    );
+
+  filter: blur(25px);
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+  max-width: 610px;
+
+  margin: 30px 0 0;
+
+  color: var(--muted);
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 38px;
+}
+
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-height: 52px;
+
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.hero-btn-primary {
+  color: var(--black);
+
+  background: var(--yellow);
+
+  border: 1px solid var(--yellow);
+}
+
+
+.hero-btn-primary span[aria-hidden="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+
+  transform: translateY(-1px);
+
+  transition: transform var(--transition);
+}
+
+.hero-btn-primary:hover span[aria-hidden="true"] {
+  transform: translate(4px, -1px);
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+
+  background: var(--gold);
+
+  border-color: var(--gold);
+
+  box-shadow:
+    0 10px 30px
+    rgba(242, 221, 114, 0.14);
+}
+
+
+
+
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.hero-btn-secondary {
+  color: var(--white);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+.hero-btn-secondary:hover {
+  transform: translateY(-2px);
+
+  color: var(--yellow);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border-color: rgba(242, 221, 114, 0.45);
+}
+
+
+/* =========================================================
+   HERO REVEAL
+========================================================= */
+
+.hero-reveal {
+  opacity: 0;
+
+  transform: translateY(28px);
+
+  animation:
+    heroReveal
+    0.9s
+    var(--ease-out)
+    forwards;
+}
+
+
+/* Eyebrow */
+
+.hero-eyebrow {
+  animation-delay: 0.15s;
+}
+
+
+/* First heading line */
+
+.hero-line:nth-child(1) {
+  animation-delay: 0.30s;
+}
+
+
+/* Second heading line */
+
+.hero-line:nth-child(2) {
+  animation-delay: 0.42s;
+}
+
+
+/* Description */
+
+.hero-description {
+  animation-delay: 0.58s;
+}
+
+
+/* Buttons */
+
+.hero-actions {
+  animation-delay: 0.72s;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+
+@keyframes heroReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .hero .container {
+    
+    padding-top: 50px;
+  }
+
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+
+  .hero-title {
+    font-size: clamp(
+      3rem,
+      12vw,
+      4.5rem
+    );
+  }
+
+
+  .hero-description {
+    max-width: 560px;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+  }
+
+
+  .hero-light {
+    width: 500px;
+    height: 500px;
+  }
+
+
+  .hero-light--secondary {
+    width: 320px;
+    height: 320px;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .hero {
+    min-height: 100svh;
+  }
+
+
+  .hero .container {
+   
+
+    padding-top: 40px;
+  }
+
+
+  .hero-eyebrow {
+    gap: 9px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.14em;
+  }
+
+
+  .hero-eyebrow span {
+    width: 20px;
+  }
+
+
+  .hero-title {
+    font-size: clamp(
+      2.8rem,
+      14vw,
+      4rem
+    );
+
+    line-height: 0.98;
+  }
+
+
+  .hero-description {
+    margin-top: 24px;
+
+    font-size: 15px;
+  }
+
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 30px;
+  }
+
+
+  .hero-btn {
+    width: 100%;
+  }
+
+
+  .hero-light {
+    width: 420px;
+    height: 420px;
+  }
+
+
+  .hero-light--secondary {
+    width: 260px;
+    height: 260px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+
+    animation: none;
+  }
+
+}

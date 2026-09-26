@@ -1,0 +1,274 @@
+/* =========================================
+   PROCESS
+========================================= */
+
+.process {
+  position: relative;
+  width: 100%;
+}
+
+
+/* Heading: left aligned like the other sections */
+
+.process-heading {
+  max-width: 760px;
+  margin: 0 0 64px;
+  text-align: left;
+}
+
+.process-heading .section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--yellow);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.process-heading .section-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  flex: 0 0 auto;
+  background: var(--yellow);
+}
+
+.process-heading h2 {
+  margin: 0 0 16px;
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.process-intro {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Steps */
+
+.process-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Fine connector behind the icons */
+
+.process-step:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  top: 35px; 
+  left: 35px; 
+  width: calc(100% + 32px); 
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    var(--blue-light),
+    rgba(27, 101, 143, 0.25)
+  );
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Individual step */
+
+.process-step {
+  position: relative;
+  min-width: 0;
+}
+
+.process-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 72px;
+  height: 72px;
+  margin: 0 0 22px;
+}
+
+/* Small circular icon holder */
+
+.process-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(242, 221, 114, 0.5);
+  border-radius: 50%;
+  background: var(--black-card);
+  color: var(--white);
+  box-shadow:
+    inset 0 0 0 5px var(--black-card),
+    inset 0 0 0 6px rgba(255, 255, 255, 0.1);
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    transform var(--transition);
+}
+
+.process-icon svg {
+
+  width: 20px;
+
+  height: 20px;
+
+  display: block;
+
+  fill: currentColor;
+
+}
+
+/* Number sits just outside the icon */
+
+.process-number {
+  position: absolute;
+  z-index: 2;
+  top: -5px;
+  right: -4px;
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Text is always left aligned */
+
+.process-content {
+  max-width: 250px;
+  text-align: left;
+}
+
+.process-content h3 {
+  margin: 0 0 10px;
+  color: var(--white);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.process-content p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* Restrained hover effect */
+
+@media (hover: hover) {
+  .process-step:hover .process-icon {
+    border-color: var(--yellow);
+    background: var(--black-light);
+    transform: translateY(-3px);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .process-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 40px;
+    row-gap: 42px;
+  }
+
+  .process-list::before {
+    display: none;
+  }
+
+  .process-content {
+    max-width: 320px;
+  }
+}
+
+/* Mobile: icon left, text right */
+
+@media (max-width: 600px) {
+  .process-container {
+    width: min(100% - 40px, var(--container));
+  }
+
+  .process-heading {
+    margin-bottom: 36px;
+  }
+
+  .process-list {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 58px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 18px;
+  }
+
+  .process-visual {
+    width: 58px;
+    height: 58px;
+    margin: 0;
+  }
+
+  .process-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+ .process-icon svg {
+
+  width: 17px;
+
+  height: 17px;
+
+}
+
+  .process-number {
+    top: -5px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    font-size: 0.55rem;
+  }
+
+  .process-content {
+    max-width: none;
+    padding-top: 3px;
+  }
+
+  .process-content h3 {
+    margin-bottom: 6px;
+  }
+}
+
+/* Respect reduced-motion settings */
+
+@media (prefers-reduced-motion: reduce) {
+  .process-icon {
+    transition: none;
+  }
+}

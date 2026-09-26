@@ -1,0 +1,52 @@
+/* =================================================
+   TESTIMONIALS
+================================================= */
+
+.testimonials {
+  background: var(--color-black-soft);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.testimonial {
+  padding: 2rem;
+
+  background: var(--color-black-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.testimonial__quote {
+  color: var(--color-white);
+
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.5;
+}
+
+.testimonial__author {
+  margin-top: 2rem;
+}
+
+.testimonial__name {
+  color: var(--color-white);
+
+  font-weight: 800;
+}
+
+.testimonial__role {
+  margin-top: 0.25rem;
+
+  color: var(--color-muted-dark);
+
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 700px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,14 @@
+.container {
+  width: min(
+    calc(100% - 48px),
+    var(--content-width)
+  );
+
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-block: 120px;
+}
+

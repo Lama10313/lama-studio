@@ -1,0 +1,106 @@
+.services {
+  background: var(--black-soft);
+}
+
+
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 950px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .services-container {
+    width: min(
+      calc(100% - 48px),
+      760px
+    );
+  }
+}
+
+@media (max-width: 600px) {
+  .services-container {
+    width: min(
+      calc(100% - 36px),
+      760px
+    );
+  }
+
+  .services-heading {
+    margin-bottom: 40px;
+  }
+
+  .service-card {
+    padding: 26px;
+  }
+
+  .service-title {
+    font-size: 24px;
+  }
+}
+
+
+
+/* =========================================================
+   SERVICE ICON — outlined, minimal
+========================================================= */
+
+.service-icon {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+
+  color: var(--muted);
+
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    color var(--transition),
+    transform 0.4s var(--ease-out);
+}
+
+.service-icon svg {
+  width: 18px;
+  height: 18px;
+
+  stroke: currentColor;
+  stroke-width: 1.5;
+
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: stroke var(--transition);
+}
+
+.service-card:hover .service-icon {
+  transform: rotate(-4deg);
+
+  border-color: transparent;
+  background: var(--yellow);
+  color: var(--black);
+}
+
+
+.service-card:nth-child(2):hover .service-icon {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.service-card:nth-child(3):hover .service-icon {
+  background: var(--blue-light);
+  color: var(--white);
+}
+

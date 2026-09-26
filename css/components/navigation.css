@@ -1,0 +1,250 @@
+/*
+=========================================================
+  NAVIGATION
+=========================================================
+*/
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+
+/*
+---------- Navigation links ----------
+*/
+
+.main-nav > a {
+  position: relative;
+
+  color: var(--muted);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color var(--transition);
+}
+
+
+/* =========================================================
+   ACTIVE SECTION INDICATOR
+========================================================= */
+
+.main-nav > a.is-active:not(.nav-contact) {
+  color: var(--yellow);
+}
+
+.main-nav > a.is-active:not(.nav-contact)::after {
+  width: 100%;
+  background: var(--yellow);
+}
+
+
+/*
+---------- Hover underline ----------
+*/
+
+.main-nav > a:not(.nav-contact)::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--gold);
+
+  transition: width var(--transition);
+}
+
+.main-nav > a:not(.nav-contact):hover {
+  color: var(--white);
+}
+
+.main-nav > a:not(.nav-contact):hover::after {
+  width: 100%;
+}
+
+
+/*
+=========================================================
+  CONTACT BUTTON
+=========================================================
+*/
+
+.nav-contact {
+  padding: 10px 19px;
+
+  background: var(--yellow);
+  border: 1px solid var(--yellow);
+  border-radius: 999px;
+
+  color: var(--black) !important;
+
+  font-weight: 800 !important;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+}
+
+.nav-contact:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+
+  transform: translateY(-1px);
+}
+
+
+/*
+=========================================================
+  MOBILE MENU BUTTON
+=========================================================
+*/
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 22px;
+  height: 2px;
+
+  background: var(--white);
+
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+/* =========================================================
+   HAMBURGER TO X ANIMATION
+========================================================= */
+
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+/*
+=========================================================
+  MOBILE
+=========================================================
+*/
+
+@media (max-width: 800px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 12px 20px 20px;
+
+    background: rgba(13, 13, 13, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+  }
+
+
+  /*
+  ---------- Open menu ----------
+  */
+
+  .main-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+  }
+
+
+  /*
+  ---------- Mobile links ----------
+  */
+
+  .main-nav > a {
+    width: 100%;
+
+    padding: 15px 0;
+
+    font-size: 0.95rem;
+  }
+
+  .main-nav > a:not(.nav-contact)::after {
+    display: none;
+  }
+
+
+  /*
+  ---------- Mobile contact ----------
+  */
+
+  .nav-contact {
+    margin-top: 8px;
+
+    padding: 12px 18px;
+
+    text-align: center;
+  }
+}

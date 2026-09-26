@@ -1,0 +1,64 @@
+:root {
+
+  /* =========================
+     COLORS
+  ========================== */
+
+  --black: #0D0D0D;
+  --black-soft: #111111;
+  --black-card: #151515;
+  --black-light: #1A1A1A;
+
+  --blue: #124E73;
+  --blue-light: #1B658F;
+  --blue-dark: #0B3955;
+
+  --yellow: #F2DD72;
+  --gold: #D9BA5F;
+  --brown: #735B30;
+
+  --white: #F7F7F5;
+  --white-soft: #E8E8E4;
+
+  --muted: #A5A5A0;
+  --muted-dark: #777772;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --border-light: rgba(255, 255, 255, 0.15);
+
+  --shadow:
+    0 20px 60px rgba(0, 0, 0, 0.30);
+
+
+  /* =========================
+     RADIUS
+  ========================== */
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+
+  /* =========================
+     LAYOUT
+  ========================== */
+
+  --container: 1240px;
+  --content-width: 1180px;
+
+
+  /* =========================
+     TRANSITIONS
+  ========================== */
+
+  --transition: 0.3s ease;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+
+
+  /* =========================
+     TYPOGRAPHY
+  ========================== */
+
+  --font-main: "Manrope", sans-serif;
+
+}
