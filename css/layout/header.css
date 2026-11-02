@@ -1,0 +1,78 @@
+/*
+=========================================================
+  HEADER
+=========================================================
+*/
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(13, 13, 13, 0.82);
+  border-bottom: 1px solid transparent;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/*
+---------- Header inner ----------
+*/
+
+.header-inner {
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+   SCROLLED STATE
+========================================================= */
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--border);
+}
+
+.site-header.is-scrolled .header-inner {
+  min-height: 64px;
+}
+
+.site-header {
+  transition:
+    border-color var(--transition);
+}
+
+.header-inner {
+  transition:
+    min-height var(--transition);
+}
+
+
+/*
+---------- Logo ----------
+*/
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  width: 120px;
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+.logo img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}

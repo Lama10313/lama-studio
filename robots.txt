@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lama10313.github.io/lama/sitemap.xml
