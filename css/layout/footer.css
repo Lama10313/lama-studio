@@ -210,6 +210,14 @@
     gap: 40px;
   }
 
+  
+.footer-contact {
+  justify-self: start;
+  width: 100%;
+  max-width: 320px;
+}
+
+
   @media (max-width: 520px) {
 
     .site-footer {

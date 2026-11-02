@@ -256,9 +256,12 @@
     column-gap: 18px;
   }
 
-  .process-step:not(:last-child)::after {
-    display: none;
-  }
+  
+.process-step:not(:last-child)::after,
+.process-step:nth-child(odd):not(:last-child)::after {
+  display: none;
+}
+
 
   .process-visual {
     width: 58px;

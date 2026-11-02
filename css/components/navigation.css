@@ -139,11 +139,18 @@
   transition:
     transform var(--transition),
     opacity var(--transition);
+
+    
+transform-origin: center;
+border-radius: 2px;
+backface-visibility: hidden;
+
 }
 
 /* =========================================================
    HAMBURGER TO X ANIMATION
 ========================================================= */
+
 
 
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -152,11 +159,13 @@
 
 .menu-toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
+
 /*
 =========================================================
   MOBILE
