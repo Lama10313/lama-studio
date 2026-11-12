@@ -19,3 +19,15 @@
 @import url("./sections/testimonials.css");
 @import url("./sections/about.css");
 @import url("./sections/contact.css");
+
+.form-status:empty {
+  display: none;
+}
+
+.hidden-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

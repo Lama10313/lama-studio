@@ -456,16 +456,17 @@ function initContactForm() {
 
   if (!form) return;
 
-  const successMsg = form.querySelector(".form-status--success");
-  const errorMsg = form.querySelector(".form-status--error");
+  const status = form.querySelector("#formStatus");
   const submitBtn = form.querySelector(".contact-btn");
 
   form.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
-    successMsg.hidden = true;
-    errorMsg.hidden = true;
+    status.textContent = "";
+    status.className = "form-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
 
     submitBtn.disabled = true;
     submitBtn.textContent = "Sender...";
@@ -486,20 +487,122 @@ function initContactForm() {
       console.log("Web3Forms response:", result);
 
       if (result.success) {
-        successMsg.hidden = false;
+        status.textContent = "Takk for meldingen! Du får svar så snart som mulig.";
+        status.className = "form-status form-status--success";
+        status.setAttribute("role", "status");
+        status.setAttribute("aria-live", "polite");
         form.reset();
       } else {
-        errorMsg.hidden = false;
+        status.textContent =
+          "Noe gikk galt. Prøv igjen, eller send e-post til lama.ghawi13@gmail.com.";
+        status.className = "form-status form-status--error";
+        status.setAttribute("role", "alert");
+        status.setAttribute("aria-live", "assertive");
       }
 
     } catch (err) {
       console.log("Web3Forms request failed:", err); // TEMPORARY
-      errorMsg.hidden = false;
+      status.textContent =
+        "Noe gikk galt. Prøv igjen, eller send e-post til lama.ghawi13@gmail.com.";
+      status.className = "form-status form-status--error";
+      status.setAttribute("role", "alert");
+      status.setAttribute("aria-live", "assertive");
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Send melding";
     }
 
+  });
+
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+function initTestimonials() {
+
+  const cards = document.querySelectorAll(".testimonial-card");
+  const reviews = [];
+
+  cards.forEach((card) => {
+
+    const review = card.querySelector(".testimonial-review");
+    const toggle = card.querySelector(".testimonial-review-toggle");
+
+    if (!review || !toggle) return;
+
+    const updateReview = () => {
+      const lineHeight = Number.parseFloat(
+        window.getComputedStyle(review).lineHeight
+      );
+      const needsToggle = review.scrollHeight > lineHeight * 4 + 1;
+      const isExpanded =
+        needsToggle && toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.hidden = !needsToggle;
+      card.classList.toggle("testimonial-card--short-review", !needsToggle);
+
+      if (!needsToggle) {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Les hele omtalen";
+        review.classList.remove("testimonial-review--collapsed");
+        review.style.maxHeight = "";
+        return;
+      }
+
+      review.classList.toggle("testimonial-review--collapsed", !isExpanded);
+      review.style.maxHeight = isExpanded ? "none" : "";
+    };
+
+    reviews.push(updateReview);
+    updateReview();
+
+    toggle.addEventListener("click", () => {
+
+      const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Les hele omtalen";
+        review.style.maxHeight = `${review.getBoundingClientRect().height}px`;
+        void review.offsetHeight;
+        review.classList.add("testimonial-review--collapsed");
+        review.style.maxHeight = `${Number.parseFloat(
+          window.getComputedStyle(review).lineHeight
+        ) * 4}px`;
+
+      } else {
+
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.textContent = "Vis mindre";
+        review.classList.remove("testimonial-review--collapsed");
+        review.style.maxHeight = `${review.scrollHeight}px`;
+
+      }
+
+    });
+
+    review.addEventListener("transitionend", (event) => {
+
+      if (event.propertyName !== "max-height") return;
+
+      if (toggle.getAttribute("aria-expanded") === "true") {
+        review.style.maxHeight = "none";
+      } else {
+        review.style.maxHeight = "";
+      }
+
+    });
+
+  });
+
+  window.addEventListener("resize", () => {
+    window.requestAnimationFrame(() => {
+      reviews.forEach((updateReview) => updateReview());
+    });
   });
 
 }
@@ -518,6 +621,7 @@ function init() {
   initContactForm();
   initFooterYear();
   initProjectsCarousel();
+  initTestimonials();
   initProjectLightbox();
   initScrollSpy();
 
